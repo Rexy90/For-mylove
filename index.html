@@ -1,0 +1,378 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nandini 🎄</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+ body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)),
+    url("https://i.postimg.cc/VmYdJXM5/501d66b44288753ab0b59914dbeac54f.jpg");
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.screen{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  opacity:0;
+  transform:scale(.95);
+  transition:1s ease;
+}
+
+.screen.active{
+  opacity:1;
+  transform:scale(1);
+  z-index:5;
+}
+
+ h1{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(38px,6vw,60px);
+  margin-bottom:10px;
+  text-shadow: 
+    0 0 8px #ff9aae,
+    0 0 14px #ff6b6b,
+    0 0 22px rgba(255,105,135,0.9);
+}
+
+p{
+  font-size:17px;
+  opacity:.95;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+
+.scene{
+  position:relative;
+  width:100%;
+  max-width:700px;
+  height:280px;
+  margin-top:10px;
+}
+
+.scene img{
+  position:absolute;
+  bottom:0;
+  width:140px;
+  animation:float 3s ease-in-out infinite;
+}
+
+#boy{left:15%}
+#girl{right:15%}
+
+@keyframes float{
+  50%{transform:translateY(-12px)}
+}
+
+.gift{
+  font-size:90px;
+  margin-top:20px;
+  cursor:pointer;
+  animation:shake 1.5s infinite;
+}
+
+@keyframes shake{
+  50%{transform:rotate(5deg)}
+}
+@keyframes floatSoft {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.container{
+  animation: floatSoft 4s ease-in-out infinite;
+}
+/* Password */
+input,button{
+  padding:12px 22px;
+  border-radius:30px;
+  border:none;
+  font-size:16px;
+  margin-top:12px;
+}
+
+button{
+  background:#ff6b6b;
+  color:white;
+  cursor:pointer;
+}
+
+/* Envelope */
+.envelope {
+  width: 180px;
+  height: 120px;
+  background: linear-gradient(135deg, #ff6b6b, #ff9aae);
+  border-radius: 10px;
+  position: relative;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 105, 135, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.heart-btn{
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:36px;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  50%{transform:translate(-50%,-50%) scale(1.2)}
+}
+
+/* Love letter slow open */
+#final{
+  opacity:0;
+  transform:scale(.85);
+  transition:2s ease;
+}
+
+#final.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  text-align: left;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Snow */
+.snow{
+  position:fixed;
+  top:-10px;
+  font-size:14px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
+
+/* Hearts */
+.heart{
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: rise 6s linear;
+  text-shadow: 0 0 6px #ff6b6b, 0 0 12px #ff9aae;
+}
+@keyframes rise{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* Santa */
+#santa{
+  position:fixed;
+  top:50px;
+  left:-200px;
+  width:160px;
+  opacity:.8;
+  animation:santaMove 30s linear infinite;
+}
+
+@keyframes santaMove{
+  to{left:110%}
+}
+</style>
+</head>
+
+<body>
+
+<img src="santa.png" id="santa">
+
+<!-- INTRO -->
+<div class="screen active" id="intro">
+  <h1>Merry Christmas 🎄</h1>
+  <p>Cutiepie😘😘</p>
+
+  <div class="scene">
+    <img src="boy.png" id="boy">
+    <img src="girl.png" id="girl">
+  </div>
+
+  <div class="gift" onclick="next('intro','lock')">🎁</div>
+  <p>Tap slowly… ✨</p>
+</div>
+
+<!-- PASSWORD -->
+<div class="screen" id="lock">
+  <h1>Just You & Me 😘</h1>
+  <p>Hint: your birthdate cutie 💗</p>
+  <input id="pass" placeholder="••••">
+  <button onclick="unlock()">Unlock 🔓</button>
+</div>
+
+<!-- ENVELOPE -->
+<div class="screen" id="envelopeScreen">
+  <h1>Secret envelop for someone special 💌</h1>
+  <p>Tap the heart ❤️</p>
+
+  <div class="envelope" onclick="openLetter()">
+    <div class="heart-btn">❤️</div>
+  </div>
+</div>
+
+<!-- LOVE LETTER -->
+ <div class="screen" id="final">
+  <h1>My Love, Nandini💗</h1>
+
+  <div class="card" style="max-height:70vh;overflow-y:auto;text-align:left">
+    <p>Heyy ✨ do you remember the love note I sent you on <b>1st of June</b>? 💌</p>
+    <p>Let’s just recap it… ⏳💭</p>
+
+    <p><b>To My First and Last Love 💖</b></p>
+
+    <p>
+      My life 🫶, you are more precious and special to me than words can express ✨.
+      You light up my days 🌤️ and bring me endless joy 😊.
+      When you’re upset 😔, it breaks my heart 💔 because I can’t bear to see you in pain.
+      I care for you more deeply than you’ll ever know 🥹💞.
+    </p>
+
+    <p>
+      I don’t understand how or why 🤍, but I know with every beat of my heart ❤️
+      that I love you.
+      My love will never end ♾️ — it would only stop on my last day.
+      You are the most beautiful girl I have ever seen 🌸,
+      and because of you, no one else compares.
+    </p>
+
+    <p>
+      You are my angel 😇 sent from heaven,
+      and my eyes search for you constantly 👀 — day and night 🌙,
+      even in my dreams ✨.
+    </p>
+
+    <p>
+      Truly, the only reason I show up at school 🎒
+      is to see you.
+      When the day ends, I miss you terribly 😞.
+      My loyalty to you is beyond measure 🔐❤️.
+    </p>
+
+    <p>
+      Perhaps I may fail as a lover 😔,
+      but I will never fail in caring for you
+      or staying loyal to you 🤞💖.
+      If God wills it 🙏,
+      I want to be yours until my last breath.
+    </p>
+
+    <p>
+      True love belongs to one person 💫,
+      and for me, that person is you.
+      If you accept my love 🥺,
+      I will be the luckiest person alive 🍀.
+      If not… my feelings will never change.
+      I will wait ⏳ — no matter how long it takes.
+    </p>
+
+    <p>
+      These were the exact words I once said to you 💌.
+      You know what… I was planning to propose to you in October 😅💍,
+      but it didn’t work according to my plan.
+      I had already splitted it in the month of June .😓Anyways, 
+      
+    </p>
+
+    <p>
+      In the end, the only thing I want to say is —
+      I love you forever with my hole heart ❤️‍🔥.
+      I’m not saying this to impress you ✋,
+      these are simply the words I feel.
+    </p>
+
+    <p>
+      Thank you very much for reading this 🥹🙏.
+    </p>
+
+    <p style="text-align:center">
+      Enjoy your Christmas 🎄✨<br>
+      <b>Merry Christmas, Sweetheart 😌💗</b>
+    </p>
+  </div>
+</div>
+
+<audio id="music">
+  <source src="snowman.mp3">
+</audio>
+
+<script>
+const music=document.getElementById("music");
+
+function next(a,b){
+  document.getElementById(a).classList.remove("active");
+  document.getElementById(b).classList.add("active");
+  music.play();
+}
+
+function unlock(){
+  if(pass.value==="2604"){
+    next("lock","envelopeScreen");
+  }else alert("Wrong password cutie 😜");
+}
+
+function openLetter(){
+  document.getElementById("envelopeScreen").classList.remove("active");
+  const f=document.getElementById("final");
+  f.classList.add("active");
+  setTimeout(()=>{f.classList.add("show");hearts();},300);
+}
+
+function hearts(){
+  for(let i=0;i<20;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💗";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  }
+}
+
+// Snow
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="snow";
+  s.innerHTML="❄️";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=4+Math.random()*6+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
